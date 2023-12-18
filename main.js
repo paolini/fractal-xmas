@@ -38,18 +38,21 @@ class Snowflake {
         this.y = 0;
         this.angle = Math.random() * 2 * Math.PI;
         this.scale = Math.pow(Math.random(),4)*width/20+width/100;
-        this.iterations = 1+Math.round(Math.random() * 3);
+        this.iterations = 1+Math.round(Math.random() * 4);
         // random white-ish color   
         this.color = 'rgb(' + Math.round(256 - Math.random() * 64) + ',' + Math.round(256-Math.random() * 8) + ',' + Math.round(256 - Math.random() * 8) + ')';
         //this.color = 'white'
         this.angleSpeed = (Math.random()-0.5) * 0.05;
+        const sprite = document.createElement('canvas');
+        sprite.width = 2 * this.scale;
+        sprite.height = 2 * this.scale;
+        this.drawSprite(sprite.getContext('2d'));
+        this.sprite = sprite;
     }
 
-    draw(ctx) {
+    drawSprite(ctx) {
         ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.angle);
-        ctx.translate(-0.5*this.scale, -0.3*this.scale);
+        ctx.translate(0, this.scale);
         ctx.beginPath();
         this.kochIter(ctx, this.scale, this.iterations);
         ctx.rotate(2 * Math.PI / 3);
@@ -60,6 +63,14 @@ class Snowflake {
         ctx.fill();
         ctx.strokeStyle = 'blue';
         ctx.stroke();
+        ctx.restore();
+    }
+
+    draw(ctx) {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.drawImage(this.sprite, -this.scale/2, -this.scale/2);
         ctx.restore();
     }
 
