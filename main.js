@@ -58,6 +58,8 @@ class Snowflake {
         this.kochIter(ctx, this.scale, this.iterations);
         ctx.fillStyle = this.color;
         ctx.fill();
+        ctx.strokeStyle = 'blue';
+        ctx.stroke();
         ctx.restore();
     }
 
