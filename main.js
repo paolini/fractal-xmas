@@ -4,7 +4,7 @@ function main($canvas) {
     var snowFlakes = []
 
     function draw() {
-        ctx.fillStyle = 'darkblue';
+        ctx.fillStyle = '#003c71';
         ctx.fillRect(0, 0, $canvas.width, $canvas.height);
         for (var i = 0; i < snowFlakes.length; i++) {
             snowFlakes[i].draw(ctx);
@@ -40,7 +40,7 @@ class Snowflake {
         this.scale = Math.pow(Math.random(),4)*width/20+width/100;
         this.iterations = 1+Math.round(Math.random() * 4);
         // random white-ish color   
-        this.color = 'rgb(' + Math.round(256 - Math.random() * 64) + ',' + Math.round(256-Math.random() * 8) + ',' + Math.round(256 - Math.random() * 8) + ')';
+        this.color = 'rgb(' + Math.round(256 - Math.random() * 128) + ',' + Math.round(256-Math.random() * 32) + ',' + Math.round(256 - Math.random() * 8) + ')';
         //this.color = 'white'
         this.angleSpeed = (Math.random()-0.5) * 0.05;
         const sprite = document.createElement('canvas');
