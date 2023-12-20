@@ -3,11 +3,15 @@
     <body>
         <canvas width="640" height="480"></canvas>
     </body>
-    <script src="main.js"></script>
+    <script src="xmas.js"></script>
     <script>
         const $canvas = document.querySelector('canvas')
         $canvas.width = window.innerWidth;
         $canvas.height = window.innerHeight;
-        main($canvas)
+        new Xmas($canvas, {
+            nFlakes: 400, 
+            fillColor: 'darkblue',
+            speed: 3.0,
+        })
     </script>
 </html>
