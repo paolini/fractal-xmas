@@ -18,7 +18,7 @@ class Xmas {
         const snowFlakes = this.snowFlakes;
         const ctx = this.ctx;
         ctx.fillStyle = this.options.fillColor;
-        ctx.fillRect(0, 0, $canvas.width, $canvas.height);
+        ctx.fillRect(0, 0, this.width, this.height);
         for (var i = 0; i < snowFlakes.length; i++) {
             snowFlakes[i].draw(ctx);
         }
@@ -28,7 +28,7 @@ class Xmas {
         const snowFlakes = this.snowFlakes;
         for (var i = 0; i < snowFlakes.length; i++) {
             snowFlakes[i].update();
-            if (snowFlakes[i].y > $canvas.height) {
+            if (snowFlakes[i].y > this.height) {
                 snowFlakes.splice(i, 1);
                 i--;
             }
